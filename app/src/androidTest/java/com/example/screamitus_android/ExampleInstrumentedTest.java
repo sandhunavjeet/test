@@ -14,13 +14,28 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-@RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.screamitus_android", appContext.getPackageName());
+@RunWith(AndroidJUnit4.class)
+public class MainActivityEspressoTest {
+
+
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule =
+            new ActivityTestRule<>(MainActivity.class);
+
+    @Test
+    public void ensureTextChangesWork() {
+        // hidden result label
+        Espresso.onView(withId(R.id.resultsLabel))
+                .check(matches(withEffectiveVisibility(Visibility.INVISIBLE)));
+        Espresso.onView(withId(R.id.daysTextBox))
+                .check(matches(withEffectiveVisibility(Visibility.VISIBLE)));
+        // Button
+        Espresso.onView(withText("Calculate"))
+                .check(matches(withEffectiveVisibility(Visibility.VISIBLE)));
+
     }
 }
+
+}
+
