@@ -14,4 +14,25 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+    @Test
+    public void testNumberOfPatientsWithZeroDay() {
+        Infection service = new Infection();
+        int actualResult = service.calculateTotalInfected(0);
+        int expectedResult = -1;
+        assertEquals(actualResult, expectedResult);
+    }
+     @Test
+    public void testNumberOfPatientsWithMultiplicityFive() {
+        Infection service = new Infection();
+        int actualResult = service.calculateTotalInfected(6);
+        int expectedResult = 6*5;
+        assertEquals(actualResult, expectedResult);
+    }
+    @Test
+    public void testNumberOfPatientsWithMultiplicityFiv() {
+        Infection service = new Infection();
+        int actualResult = service.calculateTotalInfected(8);
+        int expectedResult = 8*5;
+        assertEquals(actualResult, expectedResult);
+    }
 }
